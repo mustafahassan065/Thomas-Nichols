@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Nichols | Coach & Gym Owner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626',     // Energetic Red
+                        secondary: '#B91C1C',   // Darker Red
+                        accent: '#EA580C',      // Energetic Orange (kept for CTAs)
+                        dark: '#1F2937',        // Dark gray
+                        light: '#F9FAFB',       // Light gray
+                        neutral: '#E5E7EB'      // Neutral gray
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        body: ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .testimonial-card, .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card:hover, .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #DC2626; /* Updated to new primary color */
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        .about-icon {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .about-icon:hover {
+            transform: scale(1.1);
+            background-color: #EA580C; /* Kept accent orange */
+        }
+    </style>
+</head>
+<body class="font-body text-dark bg-light">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary font-heading">TN<span class="text-secondary">COACH</span></a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-10">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="flex items-center">
+                <a href="#contact" class="hidden md:block bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition duration-300">Get Started</a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="menuBtn" class="md:hidden ml-4 text-primary">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed top-0 left-0 h-full w-64 bg-white shadow-lg p-6 md:hidden">
+            <div class="flex justify-between items-center mb-10">
+                <a href="#" class="text-2xl font-bold text-primary font-heading">TN<span class="text-secondary">COACH</span></a>
+                <button id="closeMenuBtn" class="text-primary">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-6">
+                <a href="#home" class="text-lg font-medium hover:text-primary transition duration-300">Home</a>
+                <a href="#about" class="text-lg font-medium hover:text-primary transition duration-300">About</a>
+                <a href="#services" class="text-lg font-medium hover:text-primary transition duration-300">Services</a>
+                <a href="#testimonials" class="text-lg font-medium hover:text-primary transition duration-300">Testimonials</a>
+                <a href="#contact" class="text-lg font-medium hover:text-primary transition duration-300">Contact</a>
+            </div>
+            <a href="#contact" class="block mt-8 bg-primary text-white px-6 py-3 rounded-full text-center hover:bg-secondary transition duration-300">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20 pb-28">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-white">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-6">Build Your Body, Confidence & <span class="text-accent">Energy</span></h1>
+                <p class="text-lg md:text-xl mb-8">With Thomas Nichols, your dedicated coach. Helping you reach levels you never thought possible. Take back control of your life with sustainable action.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="bg-accent text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-orange-700 transition duration-300 text-center">Book a Session</a>
+                    <a href="#services" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-dark transition duration-300 text-center">View Services</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold font-heading text-center mb-4">About <span class="text-primary">Thomas Nichols</span></h2>
+            <p class="text-lg text-center mb-16 max-w-2xl mx-auto">Dedicated Coach helping you build your body, confidence & energy</p>
+            
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2  mb-10 lg:mb-0 flex justify-center">
+                    <div class="relative">
+                        <img src="tom.jpeg" alt="Thomas Nichols" class="rounded-lg shadow-xl z-10 relative max-w-full">
+                       
+                    </div>
+                </div>
+                <div class="lg:w-1/2 lg:pl-12">
+                    <h3 class="text-2xl font-bold font-heading mb-6">Your Coach & Mentor</h3>
+                    <p class="text-lg mb-6">I'm Thomas Nichols, a dedicated coach with a passion for helping people transform their lives through fitness. I specialize in helping clients build their body, confidence and energy to levels they never thought possible.</p>
+                    <p class="text-lg mb-6">My approach focuses on sustainable action rather than quick fixes. Whether you want to lose body fat, build muscle, increase strength, or simply improve your overall health, I provide personalized training programs tailored to your specific needs and aspirations.</p>
+                    
+                   
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8">
+                        <div class="flex flex-col items-center">
+                            <div class="about-icon bg-primary rounded-full p-3 mb-2 flex items-center justify-center w-14 h-14">
+                                <i class="fas fa-dumbbell text-white text-xl"></i>
+                            </div>
+                            <p class="font-semibold text-sm text-center">Strength Training</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="about-icon bg-primary rounded-full p-3 mb-2 flex items-center justify-center w-14 h-14">
+                                <i class="fas fa-heart text-white text-xl"></i>
+                            </div>
+                            <p class="font-semibold text-sm text-center">Energy Building</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="about-icon bg-primary rounded-full p-3 mb-2 flex items-center justify-center w-14 h-14">
+                                <i class="fas fa-brain text-white text-xl"></i>
+                            </div>
+                            <p class="font-semibold text-sm text-center">Confidence</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="about-icon bg-primary rounded-full p-3 mb-2 flex items-center justify-center w-14 h-14">
+                                <i class="fas fa-users text-white text-xl"></i>
+                            </div>
+                            <p class="font-semibold text-sm text-center">All Fitness Levels</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-neutral">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold font-heading text-center mb-4">My <span class="text-primary">Services</span></h2>
+            <p class="text-lg text-center mb-16 max-w-2xl mx-auto">I offer personalized training programs to help you reach your fitness goals effectively and safely.</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-friends text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold font-heading mb-4">One-to-One Training</h3>
+                    <p class="mb-6">Personalized sessions focused entirely on your goals with direct coaching and immediate feedback.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Custom workout plans</li>
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Form correction</li>
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Nutritional guidance</li>
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Progress tracking</li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-semibold hover:text-secondary inline-flex items-center">Learn more <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold font-heading mb-4">Online Coaching</h3>
+                    <p class="mb-6">Professional guidance from anywhere with customized plans and regular check-ins via video calls.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Virtual training sessions</li>
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Custom workout programs</li>
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> 24/7 support</li>
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Nutrition planning</li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-semibold hover:text-secondary inline-flex items-center">Learn more <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bullseye text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold font-heading mb-4">Sustainable Programs</h3>
+                    <p class="mb-6">Specialized programs designed for long-term results through sustainable action and lifestyle changes.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Sustainable workouts</li>
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Progress assessments</li>
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Lifestyle integration</li>
+                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Regular adjustments</li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-semibold hover:text-secondary inline-flex items-center">Learn more <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold font-heading text-center mb-4">Client <span class="text-primary">Testimonials</span></h2>
+            <p class="text-lg text-center mb-16 max-w-2xl mx-auto">Hear what my clients have to say about their transformation journey.</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-light p-8 rounded-xl border border-neutral">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Client" class="w-16 h-16 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold font-heading">Michael Thompson</h4>
+                            <p class="text-primary">Gained Confidence</p>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"Training with Thomas has completely changed my life. His sustainable approach helped me gain confidence I never thought I had while transforming my body."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-light p-8 rounded-xl border border-neutral">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Client" class="w-16 h-16 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold font-heading">Sarah Johnson</h4>
+                            <p class="text-primary">Energy Transformation</p>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"I've been working with Thomas for 6 months and have seen incredible results. His approach to building sustainable energy has transformed my daily life."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-light p-8 rounded-xl border border-neutral">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Client" class="w-16 h-16 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold font-heading">Robert Williams</h4>
+                            <p class="text-primary">Life Transformation</p>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"At 52, I thought my best years were behind me. Thomas proved me wrong with a sustainable program that improved my strength, energy, and overall life quality."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-neutral">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold font-heading text-center mb-4">Get In <span class="text-primary">Touch</span></h2>
+            <p class="text-lg text-center mb-16 max-w-2xl mx-auto">Ready to take back control of your life? Contact me to schedule your first session.</p>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <form class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="mb-6">
+                            <label for="name" class="block text-lg font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-lg font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-lg font-medium mb-2">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <button type="submit" class="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-secondary transition duration-300 w-full">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2 lg:pl-12">
+                    <div class="bg-white p-8 rounded-xl shadow-lg h-full">
+                        <h3 class="text-2xl font-bold font-heading mb-6">Contact Information</h3>
+                        
+                        <div class="mb-8 flex items-start">
+                            <div class="bg-primary rounded-full p-3 mr-4 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Location</h4>
+                                <p class="text-gray-700">Fitness Center Location</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8 flex items-start">
+                            <div class="bg-primary rounded-full p-3 mr-4 flex-shrink-0">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Email</h4>
+                                <p class="text-gray-700">thomas@nicholscoaching.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8 flex items-start">
+                            <div class="bg-primary rounded-full p-3 mr-4 flex-shrink-0">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Phone</h4>
+                                <p class="text-gray-700">+44 123 456 789</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10">
+                            <h4 class="font-bold text-lg mb-4">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-neutral w-12 h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-neutral w-12 h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-neutral w-12 h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-neutral w-12 h-12 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition duration-300">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-primary font-heading">TN<span class="text-white">COACH</span></a>
+                    <p class="mt-2 text-neutral">Helping you build your body, confidence & energy</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="#home" class="hover:text-primary transition duration-300">Home</a>
+                    <a href="#about" class="hover:text-primary transition duration-300">About</a>
+                    <a href="#services" class="hover:text-primary transition duration-300">Services</a>
+                    <a href="#testimonials" class="hover:text-primary transition duration-300">Testimonials</a>
+                    <a href="#contact" class="hover:text-primary transition duration-300">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-neutral">
+                <p>&copy; 2023 Thomas Nichols Coaching. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-secondary transition duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu functionality
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close mobile menu when clicking on links
+        const mobileLinks = document.querySelectorAll('#mobileMenu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Calculate adjustment for fixed header
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
